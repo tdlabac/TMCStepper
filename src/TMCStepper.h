@@ -308,8 +308,8 @@ class TMC2130Stepper : public TMCStepper<TMC2130Stepper> {
 		// Function aliases
 
 	protected:
-		void write(uint8_t addressByte, uint32_t config);
-		uint32_t read(uint8_t addressByte);
+		void write(uint8_t addressByte, uint32_t config) final override;
+		uint32_t read(uint8_t addressByte) final override;
 
 		INIT_REGISTER(GCONF){{.sr=0}};		// 32b
 		INIT_REGISTER(TCOOLTHRS){.sr=0};	// 32b
