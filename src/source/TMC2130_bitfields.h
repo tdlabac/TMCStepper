@@ -126,9 +126,9 @@ struct CHOPCONF_t {
     struct {
       uint8_t toff : 4,
               hstrt : 3,
-              hend : 4,
-                   : 1;
-      bool    disfdcc : 1,
+              hend : 4;
+      bool    fd3  : 1,
+              disfdcc : 1,
               rndtf : 1,
               chm : 1;
       uint8_t tbl : 2;

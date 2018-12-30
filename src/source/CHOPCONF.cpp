@@ -17,7 +17,7 @@ void TMC2130Stepper::CHOPCONF(uint32_t input) {
 void TMC2130Stepper::toff(		uint8_t B )	{ SET_REG(toff);	}
 void TMC2130Stepper::hstrt(		uint8_t B )	{ SET_REG(hstrt);	}
 void TMC2130Stepper::hend(		uint8_t B )	{ SET_REG(hend);	}
-//void TMC2130Stepper::fd(		uint8_t B )	{ SET_REG(fd);		}
+void TMC2130Stepper::fd3(		bool B )	{ SET_REG(fd3);		}
 void TMC2130Stepper::disfdcc(	bool 	B )	{ SET_REG(disfdcc);	}
 void TMC2130Stepper::rndtf(		bool 	B )	{ SET_REG(rndtf);	}
 void TMC2130Stepper::chm(		bool 	B )	{ SET_REG(chm);		}
@@ -34,7 +34,7 @@ void TMC2130Stepper::diss2g(	bool 	B )	{ SET_REG(diss2g);	}
 uint8_t TMC2130Stepper::toff()		{ GET_REG(toff);	}
 uint8_t TMC2130Stepper::hstrt()		{ GET_REG(hstrt);	}
 uint8_t TMC2130Stepper::hend()		{ GET_REG(hend);	}
-//uint8_t TMC2130Stepper::fd()		{ GET_REG(fd);		}
+bool	TMC2130Stepper::fd3()		{ GET_REG(fd3);		}
 bool 	TMC2130Stepper::disfdcc()	{ GET_REG(disfdcc);	}
 bool 	TMC2130Stepper::rndtf()		{ GET_REG(rndtf);	}
 bool 	TMC2130Stepper::chm()		{ GET_REG(chm);		}
