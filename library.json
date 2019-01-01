@@ -5,8 +5,8 @@
 	"description": "Arduino library for configuring Trinamic stepper drivers.",
 	"repository":
 	{
-		"type": "git",
-		"url": "https://github.com/teemuatlut/TMCStepper.git"
+		"type": "zip",
+		"url": "https://github.com/tdlabac/TMCStepper/archive/Scube.zip"
 	},
 	"frameworks": "arduino",
 	"platforms": "*"
