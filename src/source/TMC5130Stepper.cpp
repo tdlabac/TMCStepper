@@ -1,24 +1,14 @@
 #include "TMCStepper.h"
 #include "TMC_MACROS.h"
 
-TMC5130Stepper::TMC5130Stepper(uint16_t pinCS, float RS) : TMC2130Stepper(pinCS, RS) {}
-TMC5130Stepper::TMC5130Stepper(uint16_t pinCS) : TMC2130Stepper(pinCS, 0.15) {}
+TMC5130Stepper::TMC5130Stepper(uint16_t pinCS, float RS) : TMC2160Stepper(pinCS, RS) {}
+TMC5130Stepper::TMC5130Stepper(uint16_t pinCS, float RS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
+  TMC2160Stepper(pinCS, RS, pinMOSI, pinMISO, pinSCK) {}
+TMC5130Stepper::TMC5130Stepper(uint16_t pinCS, uint16_t pinMOSI, uint16_t pinMISO, uint16_t pinSCK) :
+  TMC2160Stepper(pinCS, default_RS, pinMOSI, pinMISO, pinSCK) {}
 
 void TMC5130Stepper::begin() {
-  //set pins
-  pinMode(_pinCS, OUTPUT);
-  switchCSpin(HIGH);
-
-  if (TMC_SW_SPI != NULL) TMC_SW_SPI->init();
-
-  GCONF(GCONF_register.sr);
-  CHOPCONF(CHOPCONF_register.sr);
-  COOLCONF(COOLCONF_register.sr);
-  PWMCONF(PWMCONF_register.sr);
-  IHOLD_IRUN(IHOLD_IRUN_register.sr);
-
-  toff(8); //off_time(8);
-  tbl(1); //blank_time(24);
+  TMC2160Stepper::begin();
 
   XTARGET(0);
   XACTUAL(0);
@@ -69,7 +59,7 @@ void TMC5130Stepper::X_COMPARE(uint32_t input) {
 uint8_t TMC5130Stepper::RAMPMODE() { return read(RAMPMODE_register.address); }
 void TMC5130Stepper::RAMPMODE(uint8_t input) {
   RAMPMODE_register.sr = input;
-  write(THIGH_register.address, THIGH_register.sr);
+  write(RAMPMODE_register.address, RAMPMODE_register.sr);
 }
 ///////////////////////////////////////////////////////////////////////////////////////
 // RW: XACTUAL
